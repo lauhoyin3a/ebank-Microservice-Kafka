@@ -17,14 +17,7 @@ public class EbankApplication {
 		SpringApplication.run(EbankApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner commandLineRunner(KafkaTemplate<String, String> kafkaTemplate){
-		return args -> {
-		for(int i=0;i<100;i++){
-			kafkaTemplate.send("ebank","test number"+i);
-			}
-		};
-	}
+
 @GetMapping("/123")
 	public String apiRoot(){return "Hello!";}
 

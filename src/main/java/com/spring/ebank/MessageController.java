@@ -1,27 +1,34 @@
 package com.spring.ebank;
 
 import com.spring.ebank.service.JsonKafkaProducer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("api/messages")
+@RequestMapping("ap")
 public class MessageController {
     private JsonKafkaProducer kafkaProducer;
-
-    public MessageController(JsonKafkaProducer kafkaProducer) {
+    @Autowired
+    private TransactionService transactionService;
+    public MessageController(JsonKafkaProducer kafkaProducer, TransactionService transactionService) {
         this.kafkaProducer = kafkaProducer;
+        this.transactionService= transactionService;
     }
 
-  @PostMapping("/publish")
-  public ResponseEntity<String> publish(@RequestBody Transaction transaction){
-        kafkaProducer.sendMessage(transaction);
-        return ResponseEntity.ok("Json Message sent");
-  }
+
+    @GetMapping("/transactions/{customerId}/{yearMonth}")
+    public ResponseEntity<List<Transaction>> getMonthTransactions(@PathVariable String customerId, @PathVariable String yearMonth){
+        List<Transaction> transactions = transactionService.getMonthlyTransactions(customerId, yearMonth);
+        for(Transaction transaction: transactions){
+            kafkaProducer.sendMessage(transaction);
+        }
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
 
 
 }

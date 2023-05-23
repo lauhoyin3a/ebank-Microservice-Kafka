@@ -1,4 +1,4 @@
-package com.spring.ebank;
+package com.spring.ebank.transaction;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

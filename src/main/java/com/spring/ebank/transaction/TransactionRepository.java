@@ -1,5 +1,6 @@
-package com.spring.ebank;
+package com.spring.ebank.transaction;
 
+import com.spring.ebank.transaction.Transaction;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

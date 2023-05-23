@@ -1,6 +1,6 @@
 package com.spring.ebank.config;
 
-import com.spring.ebank.Transaction;
+import com.spring.ebank.transaction.Transaction;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;

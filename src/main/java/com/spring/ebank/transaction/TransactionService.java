@@ -1,7 +1,8 @@
-package com.spring.ebank;
+package com.spring.ebank.transaction;
 
+import com.spring.ebank.transaction.Transaction;
+import com.spring.ebank.transaction.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

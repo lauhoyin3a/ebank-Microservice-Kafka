@@ -1,6 +1,6 @@
 package com.spring.ebank.service;
 
-import com.spring.ebank.Transaction;
+import com.spring.ebank.transaction.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;

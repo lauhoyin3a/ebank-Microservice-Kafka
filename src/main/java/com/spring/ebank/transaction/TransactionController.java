@@ -1,21 +1,20 @@
-package com.spring.ebank;
+package com.spring.ebank.transaction;
 
 import com.spring.ebank.service.JsonKafkaProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("ap")
-public class MessageController {
+public class TransactionController {
     private JsonKafkaProducer kafkaProducer;
     @Autowired
     private TransactionService transactionService;
-    public MessageController(JsonKafkaProducer kafkaProducer, TransactionService transactionService) {
+    public TransactionController(JsonKafkaProducer kafkaProducer, TransactionService transactionService) {
         this.kafkaProducer = kafkaProducer;
         this.transactionService= transactionService;
     }

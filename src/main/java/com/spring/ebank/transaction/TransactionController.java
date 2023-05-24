@@ -23,7 +23,7 @@ public class TransactionController {
 
 
     @GetMapping("/transactions/{customerId}/{yearMonth}")
-    public ResponseEntity<List<Transaction>> getMonthTransactions(@PathVariable String customerId, @PathVariable String yearMonth){
+    public ResponseEntity<String > getMonthTransactions(@PathVariable String customerId, @PathVariable String yearMonth){
         List<Transaction> transactions = transactionService.getMonthlyTransactions(customerId, yearMonth);
         double totalDebit=0;
         double totalCredit=0;
@@ -38,7 +38,7 @@ public class TransactionController {
             }
 
         }
-        return new ResponseEntity<>(transactions, HttpStatus.OK);
+        return new ResponseEntity<>("Total Debit: "+ totalDebit +", Total Credit:"+ totalCredit, HttpStatus.OK);
     }
 
 

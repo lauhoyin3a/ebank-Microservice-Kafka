@@ -112,6 +112,7 @@ public class Transaction {
                 ", debit=" + debit +
                 ", accountIban='" + accountIban + '\'' +
                 ", valueDate=" + valueDate +
+                ", amount='" + amount + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

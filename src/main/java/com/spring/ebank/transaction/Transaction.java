@@ -25,7 +25,6 @@ public class Transaction {
     private String customerId;
 
     private String transactionId;
-    private String currency;
 
     private boolean debit;
 
@@ -34,6 +33,25 @@ public class Transaction {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime valueDate;
     private String description;
+    private double amount;
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+
 
     public String getCustomerId() {
         return customerId;
@@ -51,13 +69,7 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public String getCurrency() {
-        return currency;
-    }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
 
     public boolean isDebit() {
         return debit;
@@ -97,7 +109,6 @@ public class Transaction {
                 "id=" + id +
                 ", customerId='" + customerId + '\'' +
                 ", transactionId='" + transactionId + '\'' +
-                ", currency='" + currency + '\'' +
                 ", debit=" + debit +
                 ", accountIban='" + accountIban + '\'' +
                 ", valueDate=" + valueDate +

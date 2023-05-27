@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("ap")
+@RequestMapping("api")
 public class TransactionController {
     private JsonKafkaProducer kafkaProducer;
 

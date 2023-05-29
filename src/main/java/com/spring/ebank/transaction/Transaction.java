@@ -33,7 +33,7 @@ public class Transaction {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime valueDate;
     private String description;
-    private double amount;
+    private String amount;
 
     public ObjectId getId() {
         return id;
@@ -43,11 +43,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public double getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 

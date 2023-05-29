@@ -35,6 +35,16 @@ public class Transaction {
     private String description;
     private String amount;
 
+    public Transaction( String customerId, String transactionId, boolean debit, String accountIban, LocalDateTime valueDate, String description, String amount) {
+        this.customerId = customerId;
+        this.transactionId = transactionId;
+        this.debit = debit;
+        this.accountIban = accountIban;
+        this.valueDate = valueDate;
+        this.description = description;
+        this.amount = amount;
+    }
+
     public ObjectId getId() {
         return id;
     }

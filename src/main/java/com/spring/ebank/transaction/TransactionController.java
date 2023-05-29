@@ -27,13 +27,13 @@ public class TransactionController {
     }
 
 
-    @GetMapping("/transactions/{customerId}/{yearMonth}")
-    public ResponseEntity<String > getMonthTransactions(@PathVariable String customerId, @PathVariable String yearMonth){
+    @GetMapping("/transactions/{customerId}/{yearMonth}/{targetCurrency}")
+    public ResponseEntity<String > getMonthTransactions(@PathVariable String customerId, @PathVariable String yearMonth, @PathVariable String targetCurrency){
         List<Transaction> transactions = transactionService.getMonthlyTransactions(customerId, yearMonth);
         double totalDebit=0;
         double totalCredit=0;
         String exchangeApiKey="56193325427c48a588d22f18";
-        String targetCurrency="HKD";
+
         for(Transaction transaction: transactions){
             kafkaProducer.sendMessage(transaction);
             String amount= transaction.getAmount();

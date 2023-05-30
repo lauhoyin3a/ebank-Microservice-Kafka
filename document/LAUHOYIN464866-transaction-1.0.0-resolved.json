@@ -1,0 +1,76 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "EBank Transaction API",
+    "description": "API for managing EBank transactions",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/LAUHOYIN464866/transaction/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "paths": {
+    "/api/transactions/{customerId}/{yearMonth}/{targetCurrency}": {
+      "get": {
+        "summary": "Get monthly transactions for a customer",
+        "description": "Returns the total debit and credit for the specified customer and month in the specified target currency.",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "description": "The customer ID.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "yearMonth",
+            "in": "path",
+            "description": "The year and month in the format 'YYYY-MM'.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "targetCurrency",
+            "in": "path",
+            "description": "The target currency for the exchange rate calculation.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}

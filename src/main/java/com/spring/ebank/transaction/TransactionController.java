@@ -25,7 +25,10 @@ public class TransactionController {
         this.kafkaProducer = kafkaProducer;
         this.transactionService= transactionService;
     }
-
+    @GetMapping("/123")
+    public String test(){
+        return "test";
+    }
 
     @GetMapping("/transactions/{customerId}/{yearMonth}/{targetCurrency}")
     public ResponseEntity<String > getMonthTransactions(@PathVariable String customerId, @PathVariable String yearMonth, @PathVariable String targetCurrency){

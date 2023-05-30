@@ -27,7 +27,7 @@ spec:
         - env:
             - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
               value: broker:29092
-          image: ebank
+          image: docker.io/lauhoyin3a/ebank:latest
           name: my-app
           ports:
             - containerPort: 8080

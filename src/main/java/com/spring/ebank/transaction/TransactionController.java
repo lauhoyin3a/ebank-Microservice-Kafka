@@ -42,14 +42,25 @@ public class TransactionController {
             String amount= transaction.getAmount();
             String[] parts = amount.trim().split("\\s+", 2);
             String currency=parts[0];
-
-            double amountValue = Double.parseDouble(parts[1]);
+            double amountValue;
+            try {
+                amountValue = Double.valueOf(parts[1]);
+            } catch (ClassCastException e) {
+                int intValue = Integer.parseInt(parts[1]);
+                amountValue = intValue;
+            }
             String apiUrl="https://v6.exchangerate-api.com/v6/"+exchangeApiKey+"/pair/"+currency+"/"+targetCurrency;
             RestTemplate restTemplate= new RestTemplate();
             String responseJson = restTemplate.getForObject(apiUrl, String.class);
             Document responseDocument = Document.parse(responseJson);
-            double exchangeRate = responseDocument.getDouble("conversion_rate");
+            double exchangeRate;
+            Object rateValue = responseDocument.get("conversion_rate");
 
+            if (rateValue instanceof Integer) {
+                exchangeRate = (double) ((Integer) rateValue);
+            } else {
+                exchangeRate = (double) rateValue;
+            }
 
             if (transaction.isDebit()){
                 totalDebit+=amountValue*exchangeRate;

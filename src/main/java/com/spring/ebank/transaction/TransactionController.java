@@ -71,7 +71,7 @@ public class TransactionController {
             }
 
         }
-        return new ResponseEntity<>("Total Debit: "+ totalDebit + targetCurrency+", Total Credit:"+ totalCredit + targetCurrency, HttpStatus.OK);
+        return new ResponseEntity<>("Total Debit: "+ totalDebit + targetCurrency+", Total Credit: "+ totalCredit + targetCurrency, HttpStatus.OK);
     }
 
 

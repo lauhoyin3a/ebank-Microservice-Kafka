@@ -26,8 +26,8 @@ public class TransactionController {
         this.transactionService= transactionService;
     }
     @GetMapping("/123")
-    public String test(){
-        return "test";
+    public String connectionTest(){
+        return "connect to server";
     }
 
     @GetMapping("/transactions/{customerId}/{yearMonth}/{targetCurrency}")
